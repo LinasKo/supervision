@@ -1,6 +1,5 @@
 ---
 comments: true
-status: new
 ---
 
 # Detect and Annotate
@@ -27,7 +26,7 @@ model.
     from inference import get_model
 
     model = get_model(model_id="yolov8n-640")
-    image = cv2.imread(<SOURCE_IMAGE_APTH>)
+    image = cv2.imread(<SOURCE_IMAGE_PATH>)
     results = model.infer(image)[0]
     ```
 
@@ -38,7 +37,7 @@ model.
     from ultralytics import YOLO
 
     model = YOLO("yolov8n.pt")
-    image = cv2.imread(<SOURCE_IMAGE_APTH>)
+    image = cv2.imread(<SOURCE_IMAGE_PATH>)
     results = model(image)[0]
     ```
 
@@ -52,7 +51,7 @@ model.
     processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50")
     model = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50")
 
-    image = Image.open(<SOURCE_IMAGE_APTH>)
+    image = Image.open(<SOURCE_IMAGE_PATH>)
     inputs = processor(images=image, return_tensors="pt")
 
     with torch.no_grad():
@@ -78,7 +77,7 @@ Now that we have predictions from a model, we can load them into Supervision.
     from inference import get_model
 
     model = get_model(model_id="yolov8n-640")
-    image = cv2.imread(<SOURCE_IMAGE_APTH>)
+    image = cv2.imread(<SOURCE_IMAGE_PATH>)
     results = model.infer(image)[0]
     detections = sv.Detections.from_inference(results)
     ```
@@ -93,7 +92,7 @@ Now that we have predictions from a model, we can load them into Supervision.
     from ultralytics import YOLO
 
     model = YOLO("yolov8n.pt")
-    image = cv2.imread(<SOURCE_IMAGE_APTH>)
+    image = cv2.imread(<SOURCE_IMAGE_PATH>)
     results = model(image)[0]
     detections = sv.Detections.from_ultralytics(results)
     ```
@@ -111,7 +110,7 @@ Now that we have predictions from a model, we can load them into Supervision.
     processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50")
     model = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50")
 
-    image = Image.open(<SOURCE_IMAGE_APTH>)
+    image = Image.open(<SOURCE_IMAGE_PATH>)
     inputs = processor(images=image, return_tensors="pt")
 
     with torch.no_grad():
@@ -146,7 +145,7 @@ Finally, we can annotate the image with the predictions. Since we are working wi
     from inference import get_model
 
     model = get_model(model_id="yolov8n-640")
-    image = cv2.imread(<SOURCE_IMAGE_APTH>)
+    image = cv2.imread(<SOURCE_IMAGE_PATH>)
     results = model.infer(image)[0]
     detections = sv.Detections.from_inference(results)
 
@@ -167,7 +166,7 @@ Finally, we can annotate the image with the predictions. Since we are working wi
     from ultralytics import YOLO
 
     model = YOLO("yolov8n.pt")
-    image = cv2.imread(<SOURCE_IMAGE_APTH>)
+    image = cv2.imread(<SOURCE_IMAGE_PATH>)
     results = model(image)[0]
     detections = sv.Detections.from_ultralytics(results)
 
@@ -191,7 +190,7 @@ Finally, we can annotate the image with the predictions. Since we are working wi
     processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50")
     model = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50")
 
-    image = Image.open(<SOURCE_IMAGE_APTH>)
+    image = Image.open(<SOURCE_IMAGE_PATH>)
     inputs = processor(images=image, return_tensors="pt")
 
     with torch.no_grad():
@@ -230,7 +229,7 @@ override this behavior by passing a list of custom `labels` to the `annotate` me
     from inference import get_model
 
     model = get_model(model_id="yolov8n-640")
-    image = cv2.imread(<PATH TO IMAGE>)
+    image = cv2.imread(<SOURCE_IMAGE_PATH>)
     results = model.infer(image)[0]
     detections = sv.Detections.from_inference(results)
 
@@ -257,7 +256,7 @@ override this behavior by passing a list of custom `labels` to the `annotate` me
     from ultralytics import YOLO
 
     model = YOLO("yolov8n.pt")
-    image = cv2.imread(<PATH TO IMAGE>)
+    image = cv2.imread(<SOURCE_IMAGE_PATH>)
     results = model(image)[0]
     detections = sv.Detections.from_ultralytics(results)
 
@@ -287,7 +286,7 @@ override this behavior by passing a list of custom `labels` to the `annotate` me
     processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50")
     model = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50")
 
-    image = Image.open(<PATH TO IMAGE>)
+    image = Image.open(<SOURCE_IMAGE_PATH>)
     inputs = processor(images=image, return_tensors="pt")
 
     with torch.no_grad():
@@ -334,7 +333,7 @@ that will allow you to draw masks instead of boxes.
     from inference import get_model
 
     model = get_model(model_id="yolov8n-seg-640")
-    image = cv2.imread(<PATH TO IMAGE>)
+    image = cv2.imread(<SOURCE_IMAGE_PATH>)
     results = model.infer(image)[0]
     detections = sv.Detections.from_inference(results)
 
@@ -355,7 +354,7 @@ that will allow you to draw masks instead of boxes.
     from ultralytics import YOLO
 
     model = YOLO("yolov8n-seg.pt")
-    image = cv2.imread(<PATH TO IMAGE>)
+    image = cv2.imread(<SOURCE_IMAGE_PATH>)
     results = model(image)[0]
     detections = sv.Detections.from_ultralytics(results)
 
